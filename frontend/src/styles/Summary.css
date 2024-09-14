@@ -1,0 +1,39 @@
+.content {
+    min-height: 80vh;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.centered-container {
+    background-color: white;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.summary-buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.summary-buttons {
+    margin-top: 25px;
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-input {
+    font-family: 'Instrument Sans';
+    font-size: 16px;
+    font-weight: medium;
+}
+
+.summary-title-input {
+    font-family: 'Instrument Sans';
+    font-size: 24px;
+    font-weight: semibold;
+}
