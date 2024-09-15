@@ -16,7 +16,6 @@ function Recorder({transcript, setTranscript}) {
     }, [done]);
 
     const scrollToBottom = () => {
-        console.log("scroll");
         endOfContentRef.current?.scrollIntoView({ behavior: "smooth" });
     }
 
