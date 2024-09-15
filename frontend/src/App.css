@@ -11,6 +11,13 @@
   color: '#0f172a';
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+      color: #f8fafc;
+      background-color: #f8fafc;
+  }
+}
+
 h1 {
   font-size: 36px;
   font-weight: semibold;
