@@ -62,11 +62,13 @@ export default function VoiceButton({setTranscript, setDone}) {
         } else {
             recognition.stop();
             setIsVoiceActive(false);
-            setDone(true);
+        
             if (transcribedText.length > 0) {
                 setTranscribedText(transcribedText)
             }
         }
+
+        setDone(isVoiceActive);
     };
 
     return (
