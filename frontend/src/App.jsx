@@ -7,6 +7,7 @@ import Recorder from './routes/recorder';
 import Root from './routes/root';
 import Summary from './routes/summary';
 import Navbar from './widgets/Navbar';
+import Journal from './routes/journal';
 
 function App() {
     const [notes, setNotes] = useState([
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/" element={<Root notes={notes}/>} />
                 <Route path="record" element={<Recorder transcript={transcript} setTranscript={setTranscript}/>} />
                 <Route path="summary" element={<Summary transcript={transcript}/>} />
+                <Route path="journal" element={<Journal />} />
             </Routes>
         </Router>
     )
