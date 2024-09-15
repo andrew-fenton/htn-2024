@@ -16,6 +16,7 @@ function Summary() {
         try {
             console.log(note)
             const response = await axios.post(BACKEND_URL, {
+                title: title,
                 text: note
             });
 
