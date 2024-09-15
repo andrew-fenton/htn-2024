@@ -45,24 +45,26 @@ export default function Journal() {
 
     return (
         <div className="main-container">
-            <h1>Your Journal Entries</h1>
-            {notes.map((note) => (
-                <Card
-                    key={note.id}
-                    size="small"
-                    title={<div className="journal-card-title">
-                            <h2>{note.title}</h2>
-                            <p className="journal-card-date">{note.date_posted.substring(0, 10)}</p>
-                            </div>
-                            }
-                    bordered={false}
-                    className="journal-card"
-                    onClick={() => handleCardClick(note.id)}
-                    style={{ cursor: "pointer" }}
-                >
-                    <p>{expandedNote === note.id ? note.text : renderSnippet(note.text)}</p>
-                </Card>
-            ))}
+            <div className="centered-container">
+                <h1>Your Journal Entries</h1>
+                {notes.map((note) => (
+                    <Card
+                        key={note.id}
+                        size="small"
+                        title={<div className="journal-card-title">
+                                <h2>{note.title}</h2>
+                                <p className="journal-card-date">{note.date_posted.substring(0, 10)}</p>
+                                </div>
+                                }
+                        bordered={false}
+                        className="journal-card"
+                        onClick={() => handleCardClick(note.id)}
+                        style={{ cursor: "pointer" }}
+                    >
+                        <p>{expandedNote === note.id ? note.text : renderSnippet(note.text)}</p>
+                    </Card>
+                ))}
+            </div>
         </div>
     );
 }
