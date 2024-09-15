@@ -13,7 +13,7 @@ function Navbar() {
         }}>
             <div></div>
             <h2><Link style={{ textDecoration: "none", color: "black", fontWeight: 600 }} to="/">memora.</Link></h2>
-            <FaBook size={30}/>
+            <FaBook size={30} style={{ color: "black" }}/>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         </nav>
     );

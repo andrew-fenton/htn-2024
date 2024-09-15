@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Flex, Input } from "antd";
 import { EditFilled } from "@ant-design/icons"
+import { useNavigate } from "react-router-dom";
 import { Spin } from 'antd';
 import "../styles/Summary.css"
 
@@ -13,6 +14,8 @@ function Summary({transcript}) {
     const [isLoading, setIsLoading] = useState(true);
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
+
+    const navigateTo = useNavigate();
 
     useEffect(() => {
         summarize();
@@ -43,6 +46,8 @@ function Summary({transcript}) {
             });
 
             console.log(response.data);
+
+            navigateTo('/journal');
         } catch (error) {
             console.error(error);
         }
