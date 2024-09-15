@@ -1,19 +1,20 @@
 .main-container {
     padding: 20px;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: left;
-    height: 80vh;
+    height: 90vh;
     overflow-y: auto;
 }
 
 .centered-container {
-    min-width: 100%;
+    max-width: 800px;
     justify-content: center;
     align-items: center;
 }
 
 .journal-card {
+    width: 100%;
     padding: 5px;
     margin-top: 30px;
     box-shadow: none;
