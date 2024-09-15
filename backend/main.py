@@ -1,5 +1,4 @@
 import os
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 from datetime import datetime
@@ -45,24 +44,45 @@ CONTEXT = ("This is a transcription of my speech in a stream of consciousness st
         "retaining my voice and tone so it still sounds like I wrote it. "
         "Only return the summarized text and nothing else. Don't prefix the response with anything.")
 
-@app.get("/")
-async def root():
-    note = Note(text="hello", date_posted=datetime.now())
-
-    return {"message": "Hello World"}
+class NoteContent(BaseModel):
+    text: str
 
 class NoteIn(BaseModel):
+    title: str
     text: str
 
 class Note(BaseModel):
+    title: str
     text: str
     date_posted: datetime
 
 class Query(BaseModel):
     text: str
 
+@app.get("/")
+async def root():
+    note = Note(text="hello", date_posted=datetime.now())
+
+    return {"message": "Hello World"}
+
+@app.get("/notes")
+async def get_all_notes():
+    notes = await notes_collection.find().to_list(100)
+
+    notes_parsed = []
+    for note in notes:
+        note_parsed = {
+            "id": str(note["_id"]),
+            "title": note["title"] if "title" in note else None,
+            "text": note["text"],
+        }
+        notes_parsed.append(note_parsed)
+
+    return notes_parsed
+    
+
 @app.post("/summarize")
-async def summarize(note: NoteIn):
+async def summarize(note: NoteContent):
     note_prompt = str(CONTEXT + " " + note.text)
 
     response = cohere_client.generate(
@@ -76,6 +96,7 @@ async def summarize(note: NoteIn):
 @app.post("/create_note")
 async def create_note(note: NoteIn):
     note = Note(
+        title=note.title,
         text=note.text,
         date_posted=datetime.now()
     )
@@ -89,7 +110,13 @@ async def create_note(note: NoteIn):
     journal_entry = "Date posted: " + db_note['date_posted'] + "Content: " + note.text
     search_engine_service.insert_entry(journal_entry)
 
-    return str(db_note)
+    note_parsed = {
+        "id": str(note["_id"]),
+        "title": note["title"],
+        "content": note["content"],
+    }
+
+    return note_parsed
 
 @app.post("/query_journal")
 async def query(query: Query):

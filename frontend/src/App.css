@@ -3,6 +3,23 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Instrument Sans';
+  color: '#0f172a';
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: semibold;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: semibold;
+}
+
+p {
+  font-size: 16px;
+  font-weight: medium;
 }
 
 .logo {
