@@ -5,7 +5,13 @@
   text-align: center;
   font-family: 'Instrument Sans';
   color: '#0f172a';
-  background-color: '#f8fafc';
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+      color: #f8fafc;
+      background-color: #f8fafc;
+  }
 }
 
 h1 {

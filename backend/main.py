@@ -75,6 +75,7 @@ async def get_all_notes():
             "id": str(note["_id"]),
             "title": note["title"] if "title" in note else None,
             "text": note["text"],
+            "date_posted": note["date_posted"],
         }
         notes_parsed.append(note_parsed)
 
