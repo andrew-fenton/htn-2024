@@ -1,9 +1,9 @@
 .main-container {
     padding: 20px;
-    max-width: 700px;
+    width: 30vw;
     margin: 0 auto;
     text-align: left;
-    height: 90vh;
+    height: 80vh;
     overflow-y: auto;
 }
 
@@ -14,7 +14,6 @@
 }
 
 .journal-card {
-    width: 100%;
     padding: 5px;
     margin-top: 30px;
     box-shadow: none;
