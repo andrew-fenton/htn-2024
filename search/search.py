@@ -61,18 +61,22 @@ class SearchEngineService:
             f"Based on the following journal entries:\n\n"
             f"{retrieved_texts}\n\n"
             f"Answer the following question:\n{query}"
-            f"Make the answer concise but make it feel genuine, very natural, and human-like."
+            f"Make the answer concise but make it feel genuine and human-like."
         )
         response = self.cohere_client.generate(
-            model='command-xlarge-nightly',
+            model='command-nightly',
             prompt=prompt,
-            max_tokens=1000,
+            max_tokens=250,
             temperature=0.7
         )
         return response.generations[0].text.strip()
 
     def rag_search(self, query):
+        print("Starting Rag Search")
         retrieved_entries = self.retrieve_entries(query)
+        print("Retrieved journal entries")
         retrieved_texts = "\n\n".join(retrieved_entries)
+        print("Concatenating entries")
         response = self.generate_response(query, retrieved_texts)
+        print("Generated response")
         return response
