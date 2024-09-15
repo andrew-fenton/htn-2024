@@ -10,24 +10,6 @@ import Navbar from './widgets/Navbar';
 import Journal from './routes/journal';
 
 function App() {
-    const [notes, setNotes] = useState([
-        {
-            title: "HTN Day 1",
-            date: "09.13.24",
-            description: "sfkjsdklfsdf",
-        },
-        {
-            title: "HTN Day 1",
-            date: "09.13.24",
-            description: "sfkjsdklfsdf",
-        },
-        {
-            title: "HTN Day 1",
-            date: "09.13.24",
-            description: "sfkjsdklfsdf",
-        },
-    ]);
-
     const [transcript, setTranscript] = useState("");
 
   return (
@@ -35,7 +17,7 @@ function App() {
             <Navbar />
             <div id="app">
                 <Routes>
-                    <Route path="/" element={<Root notes={notes}/>} />
+                    <Route path="/" element={<Root/>} />
                     <Route path="record" element={<Recorder transcript={transcript} setTranscript={setTranscript}/>} />
                     <Route path="summary" element={<Summary transcript={transcript}/>} />
                     <Route path="journal" element={<Journal />} />

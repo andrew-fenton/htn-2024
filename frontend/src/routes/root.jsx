@@ -27,22 +27,30 @@ function Root() {
     
     return (
         <>
-            <h2 style={{ fontWeight: 800 }}>
+            <h2 style={{ fontWeight: 800, fontSize: "28px" }}>
                 Welcome back, <span style={{ color: '#14b8a6' }}>Janet</span>
             </h2>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-                <h3>Total Entries</h3><br/>
-                <h1>9</h1>
+            <div style={{ display: "flex", flexDirection: "row"}}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                    <h3>Total Entries</h3>
+                    <h1>9</h1>
+                </div>
                 <Divider type="vertical" style={{borderTop: '2px solid #f0f0f0'}}/>
-                <h3>Entries this week</h3><br/>
-                <h1>3</h1>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                    <h3>Entries this week</h3>
+                    <h1>3</h1>
+                </div>
             </div>
-            <Divider style={{borderTop: '2px solid #f0f0f0'}}/>
+            <Divider style={{borderTop: '2px solid #f0f0f0', margin: "15px"}}/>
             <div>
                 <Input.Search
+                    style={{ color: "black" }}
                     placeholder="Search your memories"
                     enterButton={
-                        <Button type="primary" icon={<StarOutlined/>} style={{ backgroundColor: '#bfdbfe' }}/>
+                        <Button 
+                            type="primary" 
+                            icon={<StarOutlined/>}
+                        />
                     }
                     size="large"
                     onSearch={value => queryJournal(value)}
