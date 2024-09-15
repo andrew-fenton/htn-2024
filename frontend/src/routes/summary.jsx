@@ -31,7 +31,9 @@ function Summary({transcript}) {
                 console.log(response.data);
                 setSummary(response.data);
                 setIsLoading(false);
-            };
+            } else {
+                navigateTo('/record');
+            }
         } catch (err) {
             console.error(err);
         }

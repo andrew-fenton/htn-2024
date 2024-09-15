@@ -11,8 +11,12 @@ function Recorder({transcript, setTranscript}) {
     useEffect(() => {
         if (done) {
             // Navigates to summary page with finished transcript state
-            navigateTo('/summary')
-        }
+
+            if (transcript.length > 0) {
+                navigateTo('/summary');
+                setDone(false);
+            }
+        } 
     }, [done]);
 
     const scrollToBottom = () => {
