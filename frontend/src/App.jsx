@@ -33,12 +33,14 @@ function App() {
   return (
         <Router>
             <Navbar />
-            <Routes>
-                <Route path="/" element={<Root notes={notes}/>} />
-                <Route path="record" element={<Recorder transcript={transcript} setTranscript={setTranscript}/>} />
-                <Route path="summary" element={<Summary transcript={transcript}/>} />
-                <Route path="journal" element={<Journal />} />
-            </Routes>
+            <div id="app">
+                <Routes>
+                    <Route path="/" element={<Root notes={notes}/>} />
+                    <Route path="record" element={<Recorder transcript={transcript} setTranscript={setTranscript}/>} />
+                    <Route path="summary" element={<Summary transcript={transcript}/>} />
+                    <Route path="journal" element={<Journal />} />
+                </Routes>
+            </div>
         </Router>
     )
 }

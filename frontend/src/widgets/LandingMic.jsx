@@ -7,9 +7,8 @@ function LandingMic(props) {
         <button onClick={() => navigateTo("/record")}
             style={{
                 borderRadius: '50%',
-                width: "128px",
-                height: "128px",
-                border: '5px solid black',
+                width: "64px",
+                height: "64px",
                 backgroundColor: "#bfdbfe",
             }}>
             <div style={{
@@ -21,12 +20,12 @@ function LandingMic(props) {
                 <svg
                     {...props}
                     xmlns="http://www.w3.org/2000/svg"
-                    width="64"
-                    height="64"
+                    width="24"
+                    height="24"
                     viewBox="0 0 23 23"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                 >
