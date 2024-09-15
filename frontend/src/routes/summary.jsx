@@ -1,21 +1,39 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Flex, Input } from "antd";
 import { EditFilled } from "@ant-design/icons"
 import "../styles/Summary.css"
 
-const BACKEND_URL = "http://127.0.0.1:8000/create_note";
+const BACKEND_URL = "http://127.0.0.1:8000/";
 
-function Summary() {
+function Summary({transcript}) {
     const { TextArea } = Input;
 
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("I spent most of the afternoon working on the new prototypes, and it was one of those rare times where I lost track of time because I was so into it. The ideas were just flowing, and everything felt right. It’s such a rush when that happens, you know? When it's just me, the screen, and a cup of coffee, and things are working. It reminded me why I love this job in the first place.");
 
+    useEffect(() => {
+        summarize();
+    }, []);
+
+    const summarize = async () => {
+        try {
+            if (transcript.length > 0) {
+                const response = await axios.post(BACKEND_URL + "summarize", {
+                    text: transcript
+                });
+                console.log(response.data);
+                setSummary(response.data);
+            };
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     const postNote = async (note) => {
         try {
             console.log(note)
-            const response = await axios.post(BACKEND_URL, {
+            const response = await axios.post(BACKEND_URL + "create_note", {
                 title: title,
                 text: note
             });

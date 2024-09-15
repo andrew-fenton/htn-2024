@@ -42,7 +42,7 @@ cohere_client = cohere.Client(os.environ["COHERE_API_KEY"])
 CONTEXT = ("This is a transcription of my speech in a stream of consciousness style. "
         "I want you to write the transcribed text into a casual but coherent piece of paragraph form writing while "
         "retaining my voice and tone so it still sounds like I wrote it. "
-        "Only return the summarized text and nothing else. Don't prefix the response with anything.")
+        "Only return the summarized text and nothing else.")
 
 class NoteContent(BaseModel):
     text: str
@@ -95,28 +95,28 @@ async def summarize(note: NoteContent):
 
 @app.post("/create_note")
 async def create_note(note: NoteIn):
-    note = Note(
+    note_obj = Note(
         title=note.title,
         text=note.text,
         date_posted=datetime.now()
     )
 
-    new_note = await notes_collection.insert_one(note.dict())
+    new_note = await notes_collection.insert_one(note_obj.dict())
 
     db_note = await notes_collection.find_one({"_id": new_note.inserted_id})
     db_note['date_posted'] = db_note['date_posted'].strftime("%Y-%m-%d %H:%M:%S")
 
     # Add note to search engine db
-    journal_entry = "Date posted: " + db_note['date_posted'] + "Content: " + note.text
+    journal_entry = "Date posted: " + db_note['date_posted'] + "Content: " + note_obj.text
     search_engine_service.insert_entry(journal_entry)
 
     note_parsed = {
-        "id": str(note["_id"]),
-        "title": note["title"],
-        "content": note["content"],
+        "id": str(db_note["_id"]),
+        "title": db_note["title"],
+        "text": db_note["text"],
     }
 
-    return note_parsed
+    return str(note_parsed)
 
 @app.post("/query_journal")
 async def query(query: Query):
