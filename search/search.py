@@ -64,9 +64,9 @@ class SearchEngineService:
             f"Make the answer concise but make it feel genuine and human-like."
         )
         response = self.cohere_client.generate(
-            model='command-nightly',
+            model='command',
             prompt=prompt,
-            max_tokens=250,
+            max_tokens=350,
             temperature=0.7
         )
         return response.generations[0].text.strip()
