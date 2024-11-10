@@ -9,7 +9,7 @@ My phone contains over 2GB of voice memos, featuring countless moments of meanin
 
 ## the technical details.
 - **Voice-to-Text Transcription:** Built a transcription layer using Google's Speech API to produce accurate speech-to-text conversion while retaining user intent.
-- **Dual Database Architecture:** Used MongoDB for raw journal entries to support flexible, unstructured data, and ChromaDB for the search index, optimized for efficient vector storage and retrieval in our RAG setup.
+- **Dual Database Architecture:** Used MongoDB for raw journal entries to support flexible, unstructured data, and ChromaDB for efficient vector storage and retrieval in our RAG setup.
 - **Vector Search with Cohere:** Integrated Cohere’s command-xlarge-nightly model for embedding entries into high-dimensional vectors, enabling semantic searches to pull contextually relevant results beyond exact keyword matching.
 
 ## what's next for memora.
